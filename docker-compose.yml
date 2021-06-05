@@ -1,0 +1,24 @@
+version: '3'
+services:
+    database:
+        container_name: 'database'
+        build: './database/'
+        volumes:
+            - './database/data:/var/lib/mysql'
+        env_file: './database/.env'
+        ports:
+            - '3306:3306'
+
+    scraper:
+        container_name: 'scraper'
+        build: './scrape'
+        depends_on:
+            - database
+
+    notebooks:
+        container_name: 'notebooks'
+        build: './notebooks'
+        volumes:
+            - './notebooks/:/work'
+        ports:
+            - '8888:8888'

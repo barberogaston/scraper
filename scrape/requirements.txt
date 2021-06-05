@@ -1,0 +1,7 @@
+scrapy
+pandas
+pymysql
+cloudscraper
+scipy
+selenium
+-e .
